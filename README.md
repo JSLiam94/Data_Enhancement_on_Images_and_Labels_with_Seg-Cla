@@ -43,7 +43,7 @@
 
 ## 第一步
 
-    把要增强的文件放到`VOCdevkit/VOC2007`​里， **.txt**文件放**labels**， **.jpg**文件放**JPEGImages**	提前把不是 **.jpg**的文件转成 **.jpg**或者把它和对应的txt文件一起删了，或使用**toJPG.py**进行转换
+    把要增强的文件放到**VOCdevkit/VOC2007**​里， **.txt**文件放**labels**， **.jpg**文件放**JPEGImages**	提前把不是 **.jpg**的文件转成 **.jpg**或者把它和对应的txt文件一起删了，或使用**toJPG.py**进行转换
 
 ## 第二步
 
