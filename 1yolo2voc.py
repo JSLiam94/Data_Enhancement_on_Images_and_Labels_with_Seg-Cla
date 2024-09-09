@@ -6,12 +6,14 @@ import cv2
 # def makexml(txtPath, xmlPath, picPath):  # txt所在文件夹路径，xml文件保存路径，图片所在文件夹路径
 def makexml(picPath, txtPath, xmlPath):  # txt所在文件夹路径，xml文件保存路径，图片所在文件夹路径
     """此函数用于将yolo格式txt标注文件转换为voc格式xml标注文件
-    在自己的标注图片文件夹下建三个子文件夹，分别命名为picture、txt、xml
     """
-    dic = {'0': "Good",  # 创建字典用来对类型进行转换
-           '1': "Broken",
-           '2': "Flashover"# 此处的字典要与自己的classes.txt文件中的类对应，且顺序要一致
-           }
+    #最新版本无需使用dic
+    # dic = {
+    #     '0': "Green", 
+    #     '1': "GreenLeft", 
+    #     '2': "GreenRight", 
+    # }
+
 
     files = os.listdir(txtPath)
     for i, name in enumerate(files):
@@ -20,7 +22,7 @@ def makexml(picPath, txtPath, xmlPath):  # txt所在文件夹路径，xml文件�
         xmlBuilder.appendChild(annotation)
         txtFile = open(txtPath + name)
         txtList = txtFile.readlines()
-        img = cv2.imread(picPath + name[0:-4] + ".JPG")
+        img = cv2.imread(picPath + name[0:-4] + ".jpg")
         Pheight, Pwidth, Pdepth = img.shape
  
         folder = xmlBuilder.createElement("folder")  # folder标签
@@ -29,7 +31,7 @@ def makexml(picPath, txtPath, xmlPath):  # txt所在文件夹路径，xml文件�
         annotation.appendChild(folder)  # folder标签结束
  
         filename = xmlBuilder.createElement("filename")  # filename标签
-        filenamecontent = xmlBuilder.createTextNode(name[0:-4] + ".JPG")
+        filenamecontent = xmlBuilder.createTextNode(name[0:-4] + ".jpg")
         filename.appendChild(filenamecontent)
         annotation.appendChild(filename)  # filename标签结束
  
@@ -55,7 +57,7 @@ def makexml(picPath, txtPath, xmlPath):  # txt所在文件夹路径，xml文件�
             oneline = j.strip().split(" ")
             object = xmlBuilder.createElement("object")  # object 标签
             picname = xmlBuilder.createElement("name")  # name标签
-            namecontent = xmlBuilder.createTextNode(dic[oneline[0]])
+            namecontent = xmlBuilder.createTextNode(oneline[0])
             picname.appendChild(namecontent)
             object.appendChild(picname)  # name标签结束
  
