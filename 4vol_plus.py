@@ -4,7 +4,7 @@ import os
 from os import getcwd
 
 sets = ['train', 'val', 'test']
-classes = ["Good", "Broken", "Flashover"]  # 改成自己的类别
+#classes = ["Good", "Broken", "Flashover"]  # 改成自己的类别
 abs_path = os.getcwd()
 print(abs_path)
 
