@@ -33,10 +33,11 @@ def convert_annotation(image_id, out_file_path):
     for obj in root.iter('object'):
         difficult = obj.find('difficult').text
         cls = obj.find('name').text
-        if cls not in classes or int(difficult) == 1:
+        if int(difficult) == 1:
             continue
         has_valid_annotation = True
-        cls_id = classes.index(cls)
+        #cls_id = classes.index(cls) 此为使用字典来确定id，现修改为直接读取之前写入xml的id
+        cls_id = cls
         xmlbox = obj.find('bndbox')
         b = (float(xmlbox.find('xmin').text), float(xmlbox.find('xmax').text), float(xmlbox.find('ymin').text),
              float(xmlbox.find('ymax').text))
@@ -69,7 +70,7 @@ for image_set in sets:
                 for obj in root.iter('object'):
                     difficult = obj.find('difficult').text
                     cls = obj.find('name').text
-                    if cls not in classes or int(difficult) == 1:
+                    if int(difficult) == 1:
                         continue
                     has_valid_objects = True
                     break
