@@ -6,7 +6,7 @@ import argparse
  
 parser = argparse.ArgumentParser()
 # xml文件的地址，根据自己的数据进行修改 xml一般存放在Annotations下
-parser.add_argument('--xml_path', default='./VOCdevkit_out\/VOC2007/Annotations', type=str, help='input xml label path')
+parser.add_argument('--xml_path', default='./VOCdevkit_out/VOC2007/Annotations', type=str, help='input xml label path')
 # 数据集的划分，地址选择自己数据下的ImageSets/Main
 parser.add_argument('--txt_path', default='./mydata/dataSet', type=str, help='output txt label path')
 opt = parser.parse_args()
